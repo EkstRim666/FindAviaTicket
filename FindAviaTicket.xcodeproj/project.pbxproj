@@ -13,6 +13,7 @@
 		4129230421AD76E50056643F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4129230221AD76E50056643F /* LaunchScreen.storyboard */; };
 		4129230721AD76E50056643F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4129230621AD76E50056643F /* main.m */; };
 		41346D2A21AD96FF00239B9B /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 41346D2921AD96FF00239B9B /* Country.m */; };
+		41346D2D21AD99A400239B9B /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 41346D2C21AD99A400239B9B /* City.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		4129230621AD76E50056643F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		41346D2821AD96FF00239B9B /* Country.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
 		41346D2921AD96FF00239B9B /* Country.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
+		41346D2B21AD99A400239B9B /* City.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		41346D2C21AD99A400239B9B /* City.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 			children = (
 				41346D2821AD96FF00239B9B /* Country.h */,
 				41346D2921AD96FF00239B9B /* Country.m */,
+				41346D2B21AD99A400239B9B /* City.h */,
+				41346D2C21AD99A400239B9B /* City.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41346D2D21AD99A400239B9B /* City.m in Sources */,
 				41346D2A21AD96FF00239B9B /* Country.m in Sources */,
 				412922FC21AD76E30056643F /* MainViewController.m in Sources */,
 				4129230721AD76E50056643F /* main.m in Sources */,
