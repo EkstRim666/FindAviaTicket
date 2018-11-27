@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  FindAviaTicket
 //
 //  Created by Andrey Yusupov on 27/11/2018.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MainViewController : UIViewController
 
 
 @end
