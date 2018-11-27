@@ -12,6 +12,7 @@
 		4129230121AD76E50056643F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4129230021AD76E50056643F /* Assets.xcassets */; };
 		4129230421AD76E50056643F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4129230221AD76E50056643F /* LaunchScreen.storyboard */; };
 		4129230721AD76E50056643F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4129230621AD76E50056643F /* main.m */; };
+		41346D2A21AD96FF00239B9B /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 41346D2921AD96FF00239B9B /* Country.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		4129230321AD76E50056643F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4129230521AD76E50056643F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4129230621AD76E50056643F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		41346D2821AD96FF00239B9B /* Country.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		41346D2921AD96FF00239B9B /* Country.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 		412922F621AD76E30056643F /* FindAviaTicket */ = {
 			isa = PBXGroup;
 			children = (
+				41346D2721AD96B000239B9B /* Model */,
 				412922F721AD76E30056643F /* AppDelegate.h */,
 				412922F821AD76E30056643F /* AppDelegate.m */,
 				412922FA21AD76E30056643F /* MainViewController.h */,
@@ -66,6 +70,15 @@
 				4129230621AD76E50056643F /* main.m */,
 			);
 			path = FindAviaTicket;
+			sourceTree = "<group>";
+		};
+		41346D2721AD96B000239B9B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				41346D2821AD96FF00239B9B /* Country.h */,
+				41346D2921AD96FF00239B9B /* Country.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41346D2A21AD96FF00239B9B /* Country.m in Sources */,
 				412922FC21AD76E30056643F /* MainViewController.m in Sources */,
 				4129230721AD76E50056643F /* main.m in Sources */,
 				412922F921AD76E30056643F /* AppDelegate.m in Sources */,
