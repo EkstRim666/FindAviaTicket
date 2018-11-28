@@ -15,6 +15,7 @@
 		41346D2A21AD96FF00239B9B /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 41346D2921AD96FF00239B9B /* Country.m */; };
 		41346D2D21AD99A400239B9B /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 41346D2C21AD99A400239B9B /* City.m */; };
 		41346D3021AEC1CD00239B9B /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 41346D2F21AEC1CD00239B9B /* Airport.m */; };
+		41346D3321AEC89600239B9B /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41346D3221AEC89600239B9B /* DataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		41346D2C21AD99A400239B9B /* City.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		41346D2E21AEC1CD00239B9B /* Airport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Airport.h; sourceTree = "<group>"; };
 		41346D2F21AEC1CD00239B9B /* Airport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Airport.m; sourceTree = "<group>"; };
+		41346D3121AEC89600239B9B /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		41346D3221AEC89600239B9B /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 				4129230221AD76E50056643F /* LaunchScreen.storyboard */,
 				4129230521AD76E50056643F /* Info.plist */,
 				4129230621AD76E50056643F /* main.m */,
+				41346D3121AEC89600239B9B /* DataManager.h */,
+				41346D3221AEC89600239B9B /* DataManager.m */,
 			);
 			path = FindAviaTicket;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			files = (
 				41346D2D21AD99A400239B9B /* City.m in Sources */,
 				41346D2A21AD96FF00239B9B /* Country.m in Sources */,
+				41346D3321AEC89600239B9B /* DataManager.m in Sources */,
 				412922FC21AD76E30056643F /* MainViewController.m in Sources */,
 				41346D3021AEC1CD00239B9B /* Airport.m in Sources */,
 				4129230721AD76E50056643F /* main.m in Sources */,
