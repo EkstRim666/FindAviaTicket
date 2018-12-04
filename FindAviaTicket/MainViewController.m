@@ -8,12 +8,15 @@
 
 #import "MainViewController.h"
 #import "DataManager.h"
+#import "DeparturePlaceViewController.h"
+#import "ArrivalTableViewController.h"
 
 #define dataManager [DataManager sharedInstance]
 
 @interface MainViewController ()
 
-@property (nonatomic, strong) UILabel *nameAction;
+@property (nonatomic, strong) UIButton *departurePlace;
+@property (nonatomic, strong) UIButton *arrivalPlace;
 
 @end
 
@@ -21,8 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
     
     [dataManager loadData];
     
@@ -36,56 +37,45 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kDataManagerLoadDataDidComplete object:nil];
 }
 
--(void)loadDataComplete {
-    self.view.backgroundColor = [UIColor grayColor];
+- (void)loadDataComplete {
+    [self.departurePlace setEnabled:YES];
+    [self.arrivalPlace setEnabled:YES];
 }
 
-#pragma mark PrepareUI
--(void)prepareUI {
-    CGRect frameButton = CGRectMake(([UIScreen mainScreen].bounds.size.width / 2 - 100), ([UIScreen mainScreen].bounds.size.height / 2 - 25), 200, 50);
-    UIButton *nextController =[UIButton buttonWithType:UIButtonTypeSystem];
-    [nextController setTitle:@"Next" forState:UIControlStateNormal];
-    nextController.backgroundColor = [UIColor blueColor];
-    nextController.tintColor = [UIColor whiteColor];
-    nextController.frame = frameButton;
-    [nextController addTarget:self action:@selector(nextControllerDidTapInside:) forControlEvents:UIControlEventTouchUpInside];
-    [nextController addTarget:self action:@selector(nextControllerTap:) forControlEvents:UIControlEventTouchDown];
-    [nextController addTarget:self action:@selector(nextControllerDidTapOutside:) forControlEvents:UIControlEventTouchUpOutside];
-    [self.view addSubview:nextController];
+#pragma mark - PrepareUI
+- (void)prepareUI {
     
-    CGRect frameLabelNameAction = CGRectMake(10, ([UIScreen mainScreen].bounds.size.height / 4), ([UIScreen mainScreen].bounds.size.width - 20), 50);
-    self.nameAction = [[UILabel alloc] initWithFrame:frameLabelNameAction];
-    self.nameAction.font = [UIFont systemFontOfSize:20 weight:UIFontWeightBold];
-    self.nameAction.textColor = [UIColor whiteColor];
-    self.nameAction.textAlignment = NSTextAlignmentCenter;
-    self.nameAction.backgroundColor = [UIColor grayColor];
-    self.nameAction.text = @"Nil";
-    [self.view addSubview:self.nameAction];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    CGRect frameLabelAction = CGRectMake(10, ([UIScreen mainScreen].bounds.size.height / 4), ([UIScreen mainScreen].bounds.size.width - 20), -50);
-    UILabel *action = [[UILabel alloc] initWithFrame:frameLabelAction];
-    action.font = [UIFont systemFontOfSize:24 weight:UIFontWeightBold];
-    action.textColor = [UIColor whiteColor];
-    action.textAlignment = NSTextAlignmentCenter;
-    action.backgroundColor = [UIColor grayColor];
-    action.text = @"Action";
-    [self.view addSubview:action];
+    self.departurePlace = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.departurePlace.tintColor = [UIColor blackColor];
+    self.departurePlace.backgroundColor = [UIColor lightGrayColor];
+    self.departurePlace.frame = CGRectMake(30, 140, ([UIScreen mainScreen].bounds.size.width - 60), 60);
+    [self.departurePlace setTitle:@"FROM" forState:UIControlStateNormal];
+    [self.departurePlace addTarget:self action:@selector(placeButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.departurePlace];
+    
+    self.arrivalPlace = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.arrivalPlace.tintColor = [UIColor blackColor];
+    self.arrivalPlace.backgroundColor = [UIColor lightGrayColor];
+    self.arrivalPlace.frame = CGRectMake(30, (CGRectGetMaxY(self.departurePlace.frame) + 20), ([UIScreen mainScreen].bounds.size.width - 60), 60);
+    [self.arrivalPlace setTitle:@"TO" forState:UIControlStateNormal];
+    [self.arrivalPlace addTarget:self action:@selector(placeButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.arrivalPlace];
+    
+    [self.departurePlace setEnabled:NO];
+    [self.arrivalPlace setEnabled:NO];
 }
 
-#pragma mark IBAction
--(void)nextControllerDidTapInside:(UIButton *)sender {
-    UIViewController *anotherViewController = [UIViewController new];
-    anotherViewController.view.backgroundColor = [UIColor greenColor];
-    self.nameAction.text = @"Nil";
-    [self.navigationController pushViewController:anotherViewController animated:YES];
-}
-
--(void)nextControllerTap:(UIButton *)sender {
-    self.nameAction.text = @"Open anotherViewController";
-}
-
--(void)nextControllerDidTapOutside:(UIButton *)sender {
-    self.nameAction.text = @"Nil";
+#pragma mark - IBAction
+- (void)placeButtonDidTap:(UIButton *)sender {
+    UIViewController *placeViewController;
+    if ([sender isEqual:self.departurePlace]) {
+        placeViewController = [DeparturePlaceViewController new];
+    } else if ([sender isEqual:self.arrivalPlace]) {
+        placeViewController = [ArrivalTableViewController new];
+    }
+    [self.navigationController pushViewController:placeViewController animated:YES];
 }
 
 @end
