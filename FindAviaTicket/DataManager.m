@@ -55,7 +55,7 @@
 
 -(void)loadData {
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
-        NSArray *countriesJsonArray = [self arrayFromFileName:@"contries" ofType:@"json"];
+        NSArray *countriesJsonArray = [self arrayFromFileName:@"countries" ofType:@"json"];
         self->_countries = [self createObjectsFromArray:countriesJsonArray withType: DataSourceTypeCountry];
         
         NSArray *citiesJsonArray = [self arrayFromFileName:@"cities" ofType:@"json"];

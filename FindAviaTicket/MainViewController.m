@@ -8,6 +8,9 @@
 
 #import "MainViewController.h"
 #import "DataManager.h"
+#import "PlaceTableViewController.h"
+
+#define dataManager [DataManager sharedInstance]
 
 @interface MainViewController ()
 
@@ -20,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [dataManager loadData];
 
     [self prepareUI];
     
@@ -64,7 +69,13 @@
 
 #pragma mark - IBAction
 -(void)placeButtonDidTap:(UIButton *)sender{
-    
+    PlaceTableViewController *placeTableViewController;
+    if ([sender isEqual:self.departureButton]) {
+        placeTableViewController = [[PlaceTableViewController alloc] initWithType:PlaceTypeDeparture];
+    } else if ([sender isEqual:self.arrivalButton]) {
+        placeTableViewController = [[PlaceTableViewController alloc] initWithType:PlaceTypeArrival];
+    }
+    [self.navigationController pushViewController:placeTableViewController animated:YES];
 }
 
 @end

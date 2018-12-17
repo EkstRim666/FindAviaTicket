@@ -14,6 +14,7 @@
 		410F80FB21C7B92B00D16478 /* airports.json in Resources */ = {isa = PBXBuildFile; fileRef = 410F80FA21C7B92B00D16478 /* airports.json */; };
 		410F80FE21C7B94400D16478 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F80FD21C7B94400D16478 /* Airport.m */; };
 		410F810221C7BC8800D16478 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F810121C7BC8800D16478 /* DataManager.m */; };
+		410F810821C7EED700D16478 /* PlaceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F810721C7EED700D16478 /* PlaceTableViewController.m */; };
 		412922F921AD76E30056643F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 412922F821AD76E30056643F /* AppDelegate.m */; };
 		412922FC21AD76E30056643F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412922FB21AD76E30056643F /* MainViewController.m */; };
 		4129230121AD76E50056643F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4129230021AD76E50056643F /* Assets.xcassets */; };
@@ -33,6 +34,8 @@
 		410F80FD21C7B94400D16478 /* Airport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Airport.m; sourceTree = "<group>"; };
 		410F810021C7BC8800D16478 /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		410F810121C7BC8800D16478 /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		410F810621C7EED700D16478 /* PlaceTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceTableViewController.h; sourceTree = "<group>"; };
+		410F810721C7EED700D16478 /* PlaceTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceTableViewController.m; sourceTree = "<group>"; };
 		412922F421AD76E30056643F /* FindAviaTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindAviaTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		412922F721AD76E30056643F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		412922F821AD76E30056643F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -72,6 +75,8 @@
 			children = (
 				412922FA21AD76E30056643F /* MainViewController.h */,
 				412922FB21AD76E30056643F /* MainViewController.m */,
+				410F810621C7EED700D16478 /* PlaceTableViewController.h */,
+				410F810721C7EED700D16478 /* PlaceTableViewController.m */,
 			);
 			name = Presentations;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				410F80F721C7B4AC00D16478 /* City.m in Sources */,
+				410F810821C7EED700D16478 /* PlaceTableViewController.m in Sources */,
 				410F80F221C7B29200D16478 /* Country.m in Sources */,
 				410F810221C7BC8800D16478 /* DataManager.m in Sources */,
 				412922FC21AD76E30056643F /* MainViewController.m in Sources */,
