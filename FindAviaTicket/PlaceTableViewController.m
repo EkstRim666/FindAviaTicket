@@ -104,4 +104,11 @@
     return cell;
 }
 
+#pragma mark - Table delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DataSourceType dataType = (int)self.navigationSegmentedControl.selectedSegmentIndex + 1;
+    [self.delegate selectedPlace:[self.dataArray objectAtIndex:indexPath.row] withType:self.placeType andDataType:dataType];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

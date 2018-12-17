@@ -12,7 +12,7 @@
 
 #define dataManager [DataManager sharedInstance]
 
-@interface MainViewController ()
+@interface MainViewController ()<PlaceTableViewControllerDelegate>
 
 @property (strong, nonatomic) UIButton *departureButton;
 @property (strong, nonatomic) UIButton *arrivalButton;
@@ -75,7 +75,37 @@
     } else if ([sender isEqual:self.arrivalButton]) {
         placeTableViewController = [[PlaceTableViewController alloc] initWithType:PlaceTypeArrival];
     }
+    placeTableViewController.delegate = self;
     [self.navigationController pushViewController:placeTableViewController animated:YES];
 }
 
+#pragma mark - PlaceTableViewControllerDelegate
+- (void)selectedPlace:(id)place
+             withType:(PlaceType)placeType
+          andDataType:(DataSourceType)dataType
+{
+    NSString *title;
+    switch (dataType) {
+        case DataSourceTypeCity: {
+        City *city = (City *)place;
+            title = city.name;
+            break;
+        }
+        case DataSourceTypeAirport: {
+        Airport *airport = (Airport *)place;
+            title = airport.name;
+            break;
+        }
+        case DataSourceTypeCountry:
+            break;
+    }
+    switch (placeType) {
+        case PlaceTypeDeparture:
+            [self.departureButton setTitle:title forState:UIControlStateNormal];
+            break;
+        case PlaceTypeArrival:
+            [self.arrivalButton setTitle:title forState:UIControlStateNormal];
+            break;
+    }
+}
 @end
