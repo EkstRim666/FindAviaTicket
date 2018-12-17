@@ -11,6 +11,8 @@
 		410F80F421C7B2D000D16478 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 410F80F321C7B2D000D16478 /* countries.json */; };
 		410F80F721C7B4AC00D16478 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F80F621C7B4AC00D16478 /* City.m */; };
 		410F80F921C7B4CC00D16478 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 410F80F821C7B4CC00D16478 /* cities.json */; };
+		410F80FB21C7B92B00D16478 /* airports.json in Resources */ = {isa = PBXBuildFile; fileRef = 410F80FA21C7B92B00D16478 /* airports.json */; };
+		410F80FE21C7B94400D16478 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F80FD21C7B94400D16478 /* Airport.m */; };
 		412922F921AD76E30056643F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 412922F821AD76E30056643F /* AppDelegate.m */; };
 		412922FC21AD76E30056643F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412922FB21AD76E30056643F /* MainViewController.m */; };
 		4129230121AD76E50056643F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4129230021AD76E50056643F /* Assets.xcassets */; };
@@ -25,6 +27,9 @@
 		410F80F521C7B4AC00D16478 /* City.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
 		410F80F621C7B4AC00D16478 /* City.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 		410F80F821C7B4CC00D16478 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		410F80FA21C7B92B00D16478 /* airports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = airports.json; sourceTree = "<group>"; };
+		410F80FC21C7B94400D16478 /* Airport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Airport.h; sourceTree = "<group>"; };
+		410F80FD21C7B94400D16478 /* Airport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Airport.m; sourceTree = "<group>"; };
 		412922F421AD76E30056643F /* FindAviaTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindAviaTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		412922F721AD76E30056643F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		412922F821AD76E30056643F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,9 +76,10 @@
 		410F80EE21C7B09F00D16478 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4129230021AD76E50056643F /* Assets.xcassets */,
+				410F80FA21C7B92B00D16478 /* airports.json */,
 				410F80F821C7B4CC00D16478 /* cities.json */,
 				410F80F321C7B2D000D16478 /* countries.json */,
-				4129230021AD76E50056643F /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -81,10 +87,12 @@
 		410F80EF21C7B25200D16478 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				410F80F021C7B29200D16478 /* Country.h */,
-				410F80F121C7B29200D16478 /* Country.m */,
+				410F80FC21C7B94400D16478 /* Airport.h */,
+				410F80FD21C7B94400D16478 /* Airport.m */,
 				410F80F521C7B4AC00D16478 /* City.h */,
 				410F80F621C7B4AC00D16478 /* City.m */,
+				410F80F021C7B29200D16478 /* Country.h */,
+				410F80F121C7B29200D16478 /* Country.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -177,6 +185,7 @@
 				410F80F421C7B2D000D16478 /* countries.json in Resources */,
 				4129230421AD76E50056643F /* LaunchScreen.storyboard in Resources */,
 				4129230121AD76E50056643F /* Assets.xcassets in Resources */,
+				410F80FB21C7B92B00D16478 /* airports.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +199,7 @@
 				410F80F721C7B4AC00D16478 /* City.m in Sources */,
 				410F80F221C7B29200D16478 /* Country.m in Sources */,
 				412922FC21AD76E30056643F /* MainViewController.m in Sources */,
+				410F80FE21C7B94400D16478 /* Airport.m in Sources */,
 				4129230721AD76E50056643F /* main.m in Sources */,
 				412922F921AD76E30056643F /* AppDelegate.m in Sources */,
 			);
