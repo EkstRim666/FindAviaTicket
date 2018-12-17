@@ -7,10 +7,17 @@
 //
 
 #import "PlaceTableViewController.h"
+#import "DataManager.h"
+
+#define reuseIdentifierCell @"placeTableViewCell"
+
+#define dataManager [DataManager sharedInstance]
 
 @interface PlaceTableViewController ()
 
 @property (assign, nonatomic) PlaceType placeType;
+@property (strong, nonatomic) UISegmentedControl *navigationSegmentedControl;
+@property (strong, nonatomic) NSArray *dataArray;
 
 @end
 
@@ -27,19 +34,73 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self prepareUI];
+}
+
+#pragma mark - PrepareUI
+-(void)prepareUI {
+    self.navigationController.navigationBar.tintColor = UIColor.blackColor;
+    
+    self.navigationSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Cities", @"Airports"]];
+    self.navigationSegmentedControl.tintColor = UIColor.blackColor;
+    self.navigationSegmentedControl.selectedSegmentIndex = 0;
+    [self.navigationSegmentedControl addTarget:self action:@selector(changeSource) forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = self.navigationSegmentedControl;
+    [self changeSource];
+    
+    switch (self.placeType) {
+        case PlaceTypeDeparture:
+            self.title = @"Departure";
+            break;
+        case PlaceTypeArrival:
+            self.title = @"Arrival";
+            break;
+    }
+}
+
+-(void)changeSource {
+    switch (self.navigationSegmentedControl.selectedSegmentIndex) {
+        case 0:
+            self.dataArray = [dataManager cities];
+            break;
+        case 1:
+        default:
+            self.dataArray = [dataManager airports];
+            break;
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifierCell];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifierCell];
+    }
+    
+    switch (self.navigationSegmentedControl.selectedSegmentIndex) {
+        case 0: {
+            City *city = [self.dataArray objectAtIndex:indexPath.row];
+            cell.textLabel.text = city.name;
+            cell.detailTextLabel.text = city.code;
+            break;
+        }
+        case 1:
+        default: {
+            Airport *airport = [self.dataArray objectAtIndex:indexPath.row];
+            cell.textLabel.text = airport.name;
+            cell.detailTextLabel.text = airport.code;
+            break;
+        }
+    }
     return cell;
 }
 
