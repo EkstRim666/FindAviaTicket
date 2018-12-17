@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "DataManager.h"
 
 @interface MainViewController ()
 
@@ -16,7 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataDidLoad:) name:dataManagerLoadDataDidComplete object:nil];
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:dataManagerLoadDataDidComplete object:nil];
+}
+
+-(void)dataDidLoad:(NSNotification *)notification {
+    
 }
 
 
