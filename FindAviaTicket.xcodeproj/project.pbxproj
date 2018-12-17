@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		412922F921AD76E30056643F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 412922F821AD76E30056643F /* AppDelegate.m */; };
-		412922FC21AD76E30056643F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412922FB21AD76E30056643F /* ViewController.m */; };
-		412922FF21AD76E30056643F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 412922FD21AD76E30056643F /* Main.storyboard */; };
+		412922FC21AD76E30056643F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412922FB21AD76E30056643F /* MainViewController.m */; };
 		4129230121AD76E50056643F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4129230021AD76E50056643F /* Assets.xcassets */; };
 		4129230421AD76E50056643F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4129230221AD76E50056643F /* LaunchScreen.storyboard */; };
 		4129230721AD76E50056643F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4129230621AD76E50056643F /* main.m */; };
@@ -19,9 +18,8 @@
 		412922F421AD76E30056643F /* FindAviaTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindAviaTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		412922F721AD76E30056643F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		412922F821AD76E30056643F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		412922FA21AD76E30056643F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		412922FB21AD76E30056643F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		412922FE21AD76E30056643F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		412922FA21AD76E30056643F /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		412922FB21AD76E30056643F /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		4129230021AD76E50056643F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4129230321AD76E50056643F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4129230521AD76E50056643F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +37,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410F80EC21C7B06D00D16478 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				412922F721AD76E30056643F /* AppDelegate.h */,
+				412922F821AD76E30056643F /* AppDelegate.m */,
+				4129230521AD76E50056643F /* Info.plist */,
+				4129230221AD76E50056643F /* LaunchScreen.storyboard */,
+				4129230621AD76E50056643F /* main.m */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		410F80ED21C7B08200D16478 /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				412922FA21AD76E30056643F /* MainViewController.h */,
+				412922FB21AD76E30056643F /* MainViewController.m */,
+			);
+			name = Presentations;
+			sourceTree = "<group>";
+		};
+		410F80EE21C7B09F00D16478 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4129230021AD76E50056643F /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		412922EB21AD76E30056643F = {
 			isa = PBXGroup;
 			children = (
@@ -58,15 +85,9 @@
 		412922F621AD76E30056643F /* FindAviaTicket */ = {
 			isa = PBXGroup;
 			children = (
-				412922F721AD76E30056643F /* AppDelegate.h */,
-				412922F821AD76E30056643F /* AppDelegate.m */,
-				412922FA21AD76E30056643F /* ViewController.h */,
-				412922FB21AD76E30056643F /* ViewController.m */,
-				412922FD21AD76E30056643F /* Main.storyboard */,
-				4129230021AD76E50056643F /* Assets.xcassets */,
-				4129230221AD76E50056643F /* LaunchScreen.storyboard */,
-				4129230521AD76E50056643F /* Info.plist */,
-				4129230621AD76E50056643F /* main.m */,
+				410F80EC21C7B06D00D16478 /* App */,
+				410F80ED21C7B08200D16478 /* Presentations */,
+				410F80EE21C7B09F00D16478 /* Resources */,
 			);
 			path = FindAviaTicket;
 			sourceTree = "<group>";
@@ -130,7 +151,6 @@
 			files = (
 				4129230421AD76E50056643F /* LaunchScreen.storyboard in Resources */,
 				4129230121AD76E50056643F /* Assets.xcassets in Resources */,
-				412922FF21AD76E30056643F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				412922FC21AD76E30056643F /* ViewController.m in Sources */,
+				412922FC21AD76E30056643F /* MainViewController.m in Sources */,
 				4129230721AD76E50056643F /* main.m in Sources */,
 				412922F921AD76E30056643F /* AppDelegate.m in Sources */,
 			);
@@ -150,14 +170,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		412922FD21AD76E30056643F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				412922FE21AD76E30056643F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4129230221AD76E50056643F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
