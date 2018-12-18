@@ -9,8 +9,10 @@
 #import "MainViewController.h"
 #import "DataManager.h"
 #import "PlaceTableViewController.h"
+#import "APIManager.h"
 
 #define dataManager [DataManager sharedInstance]
+#define apiManager [APIManager sharedInstance]
 
 @interface MainViewController ()<PlaceTableViewControllerDelegate>
 
@@ -39,6 +41,10 @@
 -(void)dataDidLoad:(NSNotification *)notification {
     [self.departureButton setEnabled:YES];
     [self.arrivalButton setEnabled:YES];
+    
+    [apiManager cityForCurrentIP:^(City *city) {
+        [self selectedPlace:city withType:PlaceTypeDeparture andDataType:DataSourceTypeCity];
+    }];
 }
 
 #pragma mark - PrepareUI

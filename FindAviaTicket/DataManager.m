@@ -70,4 +70,15 @@
     });
 }
 
+-(City *)cityForIATA:(NSString *)iata {
+    if (iata) {
+        for (City *city in self.cities) {
+            if ([city.code isEqualToString:iata]) {
+                return city;
+            }
+        }
+    }
+    return nil;
+}
+
 @end
