@@ -10,6 +10,7 @@
 #import "Airport.h"
 #import "City.h"
 #import "Country.h"
+#import "Ticket.h"
 
 #define dataManagerLoadDataDidComplete @"DataManagerLoadDataDidComplete"
 
@@ -18,6 +19,13 @@ typedef enum DataSourceType {
     DataSourceTypeCity,
     DataSourceTypeAirport
 } DataSourceType;
+
+typedef struct SearchRequest {
+    __unsafe_unretained NSString *origin;
+    __unsafe_unretained NSString *destionation;
+    __unsafe_unretained NSDate *departDate;
+    __unsafe_unretained NSDate *returnDate;
+} SearchRequest;
 
 NS_ASSUME_NONNULL_BEGIN
 
