@@ -76,7 +76,7 @@
     dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
     _date.text = [dateFormatter stringFromDate:ticket.departure];
     
-    NSURL *urlLogo = [NSURL URLWithString:[NSString stringWithFormat:@"https://pics.avs.io/200/200%@.png", ticket.airline]];
+    NSURL *urlLogo = [NSURL URLWithString:[NSString stringWithFormat:@"https://pics.avs.io/200/200/%@.png", ticket.airline]];
     [_airlineLogo yy_setImageWithURL:urlLogo options:YYWebImageOptionSetImageWithFadeAnimation];
 }
 
