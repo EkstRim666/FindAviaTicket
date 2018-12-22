@@ -10,6 +10,7 @@
 #import "DataManager.h"
 #import "PlaceTableViewController.h"
 #import "APIManager.h"
+#import "TicketsTableViewController.h"
 
 #define dataManager [DataManager sharedInstance]
 #define apiManager [APIManager sharedInstance]
@@ -19,6 +20,8 @@
 @property (strong, nonatomic) UIView *placeContainerView;
 @property (strong, nonatomic) UIButton *departureButton;
 @property (strong, nonatomic) UIButton *arrivalButton;
+@property (strong, nonatomic) UIButton *searchButton;
+@property (assign, nonatomic) SearchRequest searchRequest;
 
 @end
 
@@ -83,6 +86,16 @@
     [self.arrivalButton addTarget:self action:@selector(placeButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.arrivalButton setEnabled:NO];
     [self.placeContainerView addSubview:self.arrivalButton];
+    
+    self.searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.searchButton setTitle:@"Search" forState:UIControlStateNormal];
+    self.searchButton.tintColor = UIColor.whiteColor;
+    self.searchButton.titleLabel.font = [UIFont systemFontOfSize:20 weight:UIFontWeightBold];
+    self.searchButton.frame = CGRectMake(30, (CGRectGetMaxY(self.placeContainerView.frame) + 30), (UIScreen.mainScreen.bounds.size.width - 60), 60);
+    self.searchButton.backgroundColor = UIColor.blackColor;
+    self.searchButton.layer.cornerRadius = 8;
+    [self.searchButton addTarget:self action:@selector(searchButtonDidTap:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.searchButton];
 }
 
 #pragma mark - IBAction
@@ -97,21 +110,37 @@
     [self.navigationController pushViewController:placeTableViewController animated:YES];
 }
 
+-(void)searchButtonDidTap:(UIButton *)sender{
+    [apiManager ticketsWithRequest:self.searchRequest withCompletion:^(NSArray * _Nonnull tickets) {
+        if (tickets.count > 0) {
+            TicketsTableViewController *ticketTableViewController = [[TicketsTableViewController alloc] initWithTickets:tickets];
+            [self.navigationController showViewController:ticketTableViewController sender:self];
+        } else {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wrong" message:@"No tickets found for this destination" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }];
+}
+
 #pragma mark - PlaceTableViewControllerDelegate
 - (void)selectedPlace:(id)place
              withType:(PlaceType)placeType
           andDataType:(DataSourceType)dataType
 {
     NSString *title;
+    NSString *code;
     switch (dataType) {
         case DataSourceTypeCity: {
         City *city = (City *)place;
             title = city.name;
+            code = city.code;
             break;
         }
         case DataSourceTypeAirport: {
         Airport *airport = (Airport *)place;
             title = airport.name;
+            code = airport.code;
             break;
         }
         case DataSourceTypeCountry:
@@ -120,9 +149,11 @@
     switch (placeType) {
         case PlaceTypeDeparture:
             [self.departureButton setTitle:title forState:UIControlStateNormal];
+            _searchRequest.origin = code;
             break;
         case PlaceTypeArrival:
             [self.arrivalButton setTitle:title forState:UIControlStateNormal];
+            _searchRequest.destionation = code;
             break;
     }
 }
