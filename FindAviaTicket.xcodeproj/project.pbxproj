@@ -22,9 +22,11 @@
 		4129230121AD76E50056643F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4129230021AD76E50056643F /* Assets.xcassets */; };
 		4129230421AD76E50056643F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4129230221AD76E50056643F /* LaunchScreen.storyboard */; };
 		4129230721AD76E50056643F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4129230621AD76E50056643F /* main.m */; };
+		503C4580084EDE25CBB15D32 /* libPods-FindAviaTicket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BCFF1E2AD44A7E43E2422FE /* libPods-FindAviaTicket.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CB75D496DC93891A3F4C15A /* Pods-FindAviaTicket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindAviaTicket.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindAviaTicket/Pods-FindAviaTicket.release.xcconfig"; sourceTree = "<group>"; };
 		410F80F021C7B29200D16478 /* Country.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
 		410F80F121C7B29200D16478 /* Country.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 		410F80F321C7B2D000D16478 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
@@ -51,6 +53,8 @@
 		4129230321AD76E50056643F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4129230521AD76E50056643F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4129230621AD76E50056643F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7682D279E75D1E520F420962 /* Pods-FindAviaTicket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindAviaTicket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindAviaTicket/Pods-FindAviaTicket.debug.xcconfig"; sourceTree = "<group>"; };
+		8BCFF1E2AD44A7E43E2422FE /* libPods-FindAviaTicket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FindAviaTicket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +62,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				503C4580084EDE25CBB15D32 /* libPods-FindAviaTicket.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39A97BE26E7C90D7DC6000D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7682D279E75D1E520F420962 /* Pods-FindAviaTicket.debug.xcconfig */,
+				0CB75D496DC93891A3F4C15A /* Pods-FindAviaTicket.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		410F80EC21C7B06D00D16478 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +143,8 @@
 			children = (
 				412922F621AD76E30056643F /* FindAviaTicket */,
 				412922F521AD76E30056643F /* Products */,
+				39A97BE26E7C90D7DC6000D6 /* Pods */,
+				5131AE1C3404CCACD84D4315 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +168,14 @@
 			path = FindAviaTicket;
 			sourceTree = "<group>";
 		};
+		5131AE1C3404CCACD84D4315 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BCFF1E2AD44A7E43E2422FE /* libPods-FindAviaTicket.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,6 +183,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4129230A21AD76E50056643F /* Build configuration list for PBXNativeTarget "FindAviaTicket" */;
 			buildPhases = (
+				0634378DC026F6BC86AFB390 /* [CP] Check Pods Manifest.lock */,
 				412922F021AD76E30056643F /* Sources */,
 				412922F121AD76E30056643F /* Frameworks */,
 				412922F221AD76E30056643F /* Resources */,
@@ -218,6 +243,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0634378DC026F6BC86AFB390 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FindAviaTicket-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		412922F021AD76E30056643F /* Sources */ = {
@@ -365,6 +411,7 @@
 		};
 		4129230B21AD76E50056643F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7682D279E75D1E520F420962 /* Pods-FindAviaTicket.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -381,6 +428,7 @@
 		};
 		4129230C21AD76E50056643F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0CB75D496DC93891A3F4C15A /* Pods-FindAviaTicket.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
