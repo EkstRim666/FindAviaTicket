@@ -11,6 +11,7 @@
 #import "City.h"
 #import "Country.h"
 #import "Ticket.h"
+#import "MapPrice.h"
 
 #define dataManagerLoadDataDidComplete @"DataManagerLoadDataDidComplete"
 
