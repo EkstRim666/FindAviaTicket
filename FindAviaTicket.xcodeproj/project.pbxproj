@@ -21,6 +21,7 @@
 		410F813121CE128000D16478 /* TicketsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F813021CE128000D16478 /* TicketsTableViewController.m */; };
 		410F813421CE3EFC00D16478 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F813321CE3EFC00D16478 /* LocationService.m */; };
 		410F813721CF3F0F00D16478 /* MapPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F813621CF3F0F00D16478 /* MapPrice.m */; };
+		410F813A21CF4AD200D16478 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F813921CF4AD200D16478 /* MapViewController.m */; };
 		412922F921AD76E30056643F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 412922F821AD76E30056643F /* AppDelegate.m */; };
 		412922FC21AD76E30056643F /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 412922FB21AD76E30056643F /* MainViewController.m */; };
 		4129230121AD76E50056643F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4129230021AD76E50056643F /* Assets.xcassets */; };
@@ -56,6 +57,8 @@
 		410F813321CE3EFC00D16478 /* LocationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		410F813521CF3F0F00D16478 /* MapPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapPrice.h; sourceTree = "<group>"; };
 		410F813621CF3F0F00D16478 /* MapPrice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapPrice.m; sourceTree = "<group>"; };
+		410F813821CF4AD200D16478 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		410F813921CF4AD200D16478 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		412922F421AD76E30056643F /* FindAviaTicket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindAviaTicket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		412922F721AD76E30056643F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		412922F821AD76E30056643F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 			children = (
 				412922FA21AD76E30056643F /* MainViewController.h */,
 				412922FB21AD76E30056643F /* MainViewController.m */,
+				410F813821CF4AD200D16478 /* MapViewController.h */,
+				410F813921CF4AD200D16478 /* MapViewController.m */,
 				410F810621C7EED700D16478 /* PlaceTableViewController.h */,
 				410F810721C7EED700D16478 /* PlaceTableViewController.m */,
 				410F812F21CE128000D16478 /* TicketsTableViewController.h */,
@@ -302,6 +307,7 @@
 				410F812B21CD425A00D16478 /* Ticket.m in Sources */,
 				412922FC21AD76E30056643F /* MainViewController.m in Sources */,
 				410F80FE21C7B94400D16478 /* Airport.m in Sources */,
+				410F813A21CF4AD200D16478 /* MapViewController.m in Sources */,
 				4129230721AD76E50056643F /* main.m in Sources */,
 				412922F921AD76E30056643F /* AppDelegate.m in Sources */,
 			);
