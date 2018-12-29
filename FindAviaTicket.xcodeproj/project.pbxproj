@@ -31,6 +31,7 @@
 		41B0029421D75E830022F5EE /* AirTicketsBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41B0029221D75E830022F5EE /* AirTicketsBase.xcdatamodeld */; };
 		41B0029E21D762010022F5EE /* FavoriteTicket+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B0029C21D762010022F5EE /* FavoriteTicket+CoreDataClass.m */; };
 		41B0029F21D762010022F5EE /* FavoriteTicket+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B0029D21D762010022F5EE /* FavoriteTicket+CoreDataProperties.m */; };
+		41B002A321D76CF20022F5EE /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B002A221D76CF20022F5EE /* CoreDataHelper.m */; };
 		503C4580084EDE25CBB15D32 /* libPods-FindAviaTicket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BCFF1E2AD44A7E43E2422FE /* libPods-FindAviaTicket.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,8 @@
 		41B0029B21D762010022F5EE /* FavoriteTicket+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FavoriteTicket+CoreDataClass.h"; sourceTree = "<group>"; };
 		41B0029C21D762010022F5EE /* FavoriteTicket+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FavoriteTicket+CoreDataClass.m"; sourceTree = "<group>"; };
 		41B0029D21D762010022F5EE /* FavoriteTicket+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FavoriteTicket+CoreDataProperties.m"; sourceTree = "<group>"; };
+		41B002A121D76CF20022F5EE /* CoreDataHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		41B002A221D76CF20022F5EE /* CoreDataHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		7682D279E75D1E520F420962 /* Pods-FindAviaTicket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindAviaTicket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindAviaTicket/Pods-FindAviaTicket.debug.xcconfig"; sourceTree = "<group>"; };
 		8BCFF1E2AD44A7E43E2422FE /* libPods-FindAviaTicket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FindAviaTicket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -170,6 +173,8 @@
 			children = (
 				410F810C21C8AAEB00D16478 /* APIManager.h */,
 				410F810D21C8AAEB00D16478 /* APIManager.m */,
+				41B002A121D76CF20022F5EE /* CoreDataHelper.h */,
+				41B002A221D76CF20022F5EE /* CoreDataHelper.m */,
 				410F810021C7BC8800D16478 /* DataManager.h */,
 				410F810121C7BC8800D16478 /* DataManager.m */,
 				410F813221CE3EFC00D16478 /* LocationService.h */,
@@ -340,6 +345,7 @@
 				415D466E21D4D1F600B1640C /* TabBarController.m in Sources */,
 				41B0029E21D762010022F5EE /* FavoriteTicket+CoreDataClass.m in Sources */,
 				4129230721AD76E50056643F /* main.m in Sources */,
+				41B002A321D76CF20022F5EE /* CoreDataHelper.m in Sources */,
 				412922F921AD76E30056643F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
