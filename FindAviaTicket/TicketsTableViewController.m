@@ -73,6 +73,7 @@
     } else {
         cell.ticket = [self.tickets objectAtIndex:indexPath.row];
     }
+    cell.selectionStyle = UITableViewCellEditingStyleNone;
     return cell;
 }
 
