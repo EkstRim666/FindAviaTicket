@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CoreDataHelper : NSObject
 
-+(instancetype)sharedInstsnce;
++(instancetype)sharedInstance;
 -(BOOL)isFavorite:(Ticket *)ticket;
 -(NSArray *)favorites;
 -(void)addToFavorite:(Ticket *)ticket;

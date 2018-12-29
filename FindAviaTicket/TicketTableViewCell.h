@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "DataManager.h"
+#import "FavoriteTicket+CoreDataClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TicketTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) Ticket *ticket;
+@property (strong, nonatomic) FavoriteTicket *favoriteTicket;
 
 @end
 

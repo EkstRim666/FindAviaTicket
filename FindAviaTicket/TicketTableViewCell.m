@@ -80,4 +80,19 @@
     [_airlineLogo yy_setImageWithURL:urlLogo options:YYWebImageOptionSetImageWithFadeAnimation];
 }
 
+-(void)setFavoriteTicket:(FavoriteTicket *)favoriteTicket {
+    _favoriteTicket = favoriteTicket;
+    
+    _price.text = [NSString stringWithFormat:@"%lld rub", favoriteTicket.price];
+    
+    _places.text = [NSString stringWithFormat:@"%@ - %@", favoriteTicket.from, favoriteTicket.to];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
+    _date.text = [dateFormatter stringFromDate:favoriteTicket.departure];
+    
+    NSURL *urlLogo = [NSURL URLWithString:[NSString stringWithFormat:@"https://pics.avs.io/200/200/%@.png", favoriteTicket.airline]];
+    [_airlineLogo yy_setImageWithURL:urlLogo options:YYWebImageOptionSetImageWithFadeAnimation];
+}
+
 @end
