@@ -32,6 +32,8 @@
 		41B0029E21D762010022F5EE /* FavoriteTicket+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B0029C21D762010022F5EE /* FavoriteTicket+CoreDataClass.m */; };
 		41B0029F21D762010022F5EE /* FavoriteTicket+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B0029D21D762010022F5EE /* FavoriteTicket+CoreDataProperties.m */; };
 		41B002A321D76CF20022F5EE /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B002A221D76CF20022F5EE /* CoreDataHelper.m */; };
+		41B002B221D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B002B021D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataClass.m */; };
+		41B002B321D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B002B121D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataProperties.m */; };
 		503C4580084EDE25CBB15D32 /* libPods-FindAviaTicket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BCFF1E2AD44A7E43E2422FE /* libPods-FindAviaTicket.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,10 @@
 		41B0029D21D762010022F5EE /* FavoriteTicket+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FavoriteTicket+CoreDataProperties.m"; sourceTree = "<group>"; };
 		41B002A121D76CF20022F5EE /* CoreDataHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		41B002A221D76CF20022F5EE /* CoreDataHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		41B002AE21D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FavoriteMapPrice+CoreDataProperties.h"; sourceTree = "<group>"; };
+		41B002AF21D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FavoriteMapPrice+CoreDataClass.h"; sourceTree = "<group>"; };
+		41B002B021D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FavoriteMapPrice+CoreDataClass.m"; sourceTree = "<group>"; };
+		41B002B121D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FavoriteMapPrice+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7682D279E75D1E520F420962 /* Pods-FindAviaTicket.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindAviaTicket.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindAviaTicket/Pods-FindAviaTicket.debug.xcconfig"; sourceTree = "<group>"; };
 		8BCFF1E2AD44A7E43E2422FE /* libPods-FindAviaTicket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FindAviaTicket.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -216,6 +222,10 @@
 		41B002A021D762610022F5EE /* PersistentEntity */ = {
 			isa = PBXGroup;
 			children = (
+				41B002AF21D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataClass.h */,
+				41B002B021D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataClass.m */,
+				41B002AE21D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataProperties.h */,
+				41B002B121D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataProperties.m */,
 				41B0029B21D762010022F5EE /* FavoriteTicket+CoreDataClass.h */,
 				41B0029C21D762010022F5EE /* FavoriteTicket+CoreDataClass.m */,
 				41B0029A21D762010022F5EE /* FavoriteTicket+CoreDataProperties.h */,
@@ -341,9 +351,11 @@
 				410F812B21CD425A00D16478 /* Ticket.m in Sources */,
 				412922FC21AD76E30056643F /* MainViewController.m in Sources */,
 				410F80FE21C7B94400D16478 /* Airport.m in Sources */,
+				41B002B321D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataProperties.m in Sources */,
 				410F813A21CF4AD200D16478 /* MapViewController.m in Sources */,
 				415D466E21D4D1F600B1640C /* TabBarController.m in Sources */,
 				41B0029E21D762010022F5EE /* FavoriteTicket+CoreDataClass.m in Sources */,
+				41B002B221D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataClass.m in Sources */,
 				4129230721AD76E50056643F /* main.m in Sources */,
 				41B002A321D76CF20022F5EE /* CoreDataHelper.m in Sources */,
 				412922F921AD76E30056643F /* AppDelegate.m in Sources */,
