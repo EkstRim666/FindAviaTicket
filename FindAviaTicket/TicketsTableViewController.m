@@ -52,7 +52,7 @@
     
     if (isFavorites) {
         self.navigationController.navigationBar.prefersLargeTitles = YES;
-        _tickets = [coreDataHelper favorites];
+        _tickets = [coreDataHelper favorites:favoriteTicket];
         [self.tableView reloadData];
     }
 }
@@ -87,13 +87,13 @@
     else {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ticket Actions" message:@"What do you want to do with ticket?" preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *favoriteAction;
-        if ([coreDataHelper isFavorite:[self.tickets objectAtIndex:indexPath.row]]) {
+        if ([coreDataHelper isFavorite:[self.tickets objectAtIndex:indexPath.row] withFavorite:favoriteTicket]) {
             favoriteAction = [UIAlertAction actionWithTitle:@"Delete from favorites" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                [coreDataHelper removeFromFavorite:[self.tickets objectAtIndex:indexPath.row]];
+                [coreDataHelper removeFromFavorite:[self.tickets objectAtIndex:indexPath.row] withFavorite:favoriteTicket];
             }];
         } else {
             favoriteAction = [UIAlertAction actionWithTitle:@"Add to favorites" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [coreDataHelper addToFavorite:[self.tickets objectAtIndex:indexPath.row]];
+                [coreDataHelper addToFavorite:[self.tickets objectAtIndex:indexPath.row] withFavorite:favoriteTicket];
             }];
         }
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:nil];

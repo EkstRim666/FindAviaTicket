@@ -9,15 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "DataManager.h"
 
+typedef enum Favorite {
+    favoriteTicket,
+    favoriteMapPrice
+} Favorite;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CoreDataHelper : NSObject
 
 +(instancetype)sharedInstance;
--(BOOL)isFavorite:(Ticket *)ticket;
--(NSArray *)favorites;
--(void)addToFavorite:(Ticket *)ticket;
--(void)removeFromFavorite:(Ticket *)ticket;
+-(BOOL)isFavorite:(id)element withFavorite:(Favorite)favorite;
+-(NSArray *)favorites:(Favorite)favorite;
+-(void)addToFavorite:(id)element withFavorite:(Favorite)favorite;
+-(void)removeFromFavorite:(id)element withFavorite:(Favorite)favorite;
 
 @end
 
