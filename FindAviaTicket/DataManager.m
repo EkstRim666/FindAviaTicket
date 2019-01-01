@@ -90,4 +90,14 @@
     return nil;
 }
 
+-(MapPrice *)mapPriceForTitleAnnotation:(NSString *)titleAnnotation {
+    NSString *search = [titleAnnotation componentsSeparatedByString:@" "][0];
+    for (MapPrice *mapPrice in self.mapPrice) {
+        if ([mapPrice.destination.name isEqualToString:search]) {
+            return mapPrice;
+        }
+    }
+    return nil;
+}
+
 @end

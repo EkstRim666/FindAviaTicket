@@ -95,4 +95,25 @@
     [_airlineLogo yy_setImageWithURL:urlLogo options:YYWebImageOptionSetImageWithFadeAnimation];
 }
 
+- (void)setFavoriteMapPrice:(FavoriteMapPrice *)favoriteMapPrice {
+    _favoriteMapPrice = favoriteMapPrice;
+    
+    _price.text = [NSString stringWithFormat:@"%lld rub", favoriteMapPrice.value];
+    
+    _places.text = [NSString stringWithFormat:@"%@ - %@", favoriteMapPrice.origin, favoriteMapPrice.destination];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
+    _date.text = [dateFormatter stringFromDate:favoriteMapPrice.departure];
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    self.price.text = nil;
+    self.places.text = nil;
+    self.date.text = nil;
+    self.airlineLogo.image = nil;
+}
+
 @end

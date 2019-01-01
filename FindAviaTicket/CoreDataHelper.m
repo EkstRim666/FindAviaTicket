@@ -61,7 +61,7 @@
             case favoriteMapPrice: {
                 MapPrice *mapPrice = element;
                 request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteMapPrice"];
-                request.predicate = [NSPredicate predicateWithFormat:@"value == %ld AND origin == %@ AND destination == %@ AND departure == %@ AND distance == %ld AND actual == %@ AND numberOfChanges == %d", mapPrice.value.integerValue, mapPrice.origin.name, mapPrice.destination.name, mapPrice.departure, mapPrice.distance.integerValue, mapPrice.actual, mapPrice.numberOfChanges.integerValue];
+                request.predicate = [NSPredicate predicateWithFormat:@"value == %lld AND origin == %@ AND destination == %@ AND departure == %@ AND distance == %ld AND numberOfChanges == %d", mapPrice.value.integerValue, mapPrice.origin.code, mapPrice.destination.code, mapPrice.departure, mapPrice.distance.integerValue, mapPrice.numberOfChanges.integerValue];
             }
             break;
     }
@@ -99,8 +99,8 @@
                 favoriteMapPrice.value = mapPrice.value.integerValue;
                 favoriteMapPrice.distance = mapPrice.distance.integerValue;
                 favoriteMapPrice.actual = mapPrice.actual;
-                favoriteMapPrice.origin = mapPrice.origin.name;
-                favoriteMapPrice.destination = mapPrice.destination.name;
+                favoriteMapPrice.origin = mapPrice.origin.code;
+                favoriteMapPrice.destination = mapPrice.destination.code;
                 favoriteMapPrice.numberOfChanges = mapPrice.numberOfChanges.integerValue;
                 favoriteMapPrice.departure = mapPrice.departure;
                 favoriteMapPrice.returnDate = mapPrice.returnDate;
@@ -113,26 +113,47 @@
 }
 
 -(void)removeFromFavorite:(id)element
-             withFavorite:(Favorite)favorite
+withFavoriteClassofElement:(FavoriteClassOfElement)favoriteClass
+             andFavorite:(Favorite)favorite
 {
     switch (favorite) {
             case favoriteTicket: {
-                FavoriteTicket *favoriteTicket = [self favoriteFromTickets:(Ticket *)element withFavorite:favorite];
-                if (favoriteTicket) {
-                    [self.persistentContainer.viewContext deleteObject:favoriteTicket];
-                    [self save];
+                switch (favoriteClass) {
+                    case FavoriteClassOfElementTicket: {
+                        FavoriteTicket *favoriteTicket = [self favoriteFromTickets:(Ticket *)element withFavorite:favorite];
+                        if (favoriteTicket) {
+                            [self.persistentContainer.viewContext deleteObject:favoriteTicket];
+                        }
+                    }
+                        break;
+                    case FavoriteClassOfElementFavoriteTicket:
+                        [self.persistentContainer.viewContext deleteObject:(FavoriteTicket *)element];
+                        break;
+                    default:
+                        break;
                 }
             }
             break;
             case favoriteMapPrice: {
-                FavoriteMapPrice *favoriteMapPrice = [self favoriteFromTickets:(MapPrice *)element withFavorite:favorite];
-                if (favoriteMapPrice) {
-                    [self.persistentContainer.viewContext deleteObject:favoriteMapPrice];
-                    [self save];
+                switch (favoriteClass) {
+                    case FavoriteClassOfElementMapPrice: {
+                        FavoriteMapPrice *favoriteMapPrice = [self favoriteFromTickets:(MapPrice *)element withFavorite:favorite];
+                        if (favoriteMapPrice) {
+                            [self.persistentContainer.viewContext deleteObject:favoriteMapPrice];
+                        }
+
+                    }
+                        break;
+                    case FavoriteClassOfElementFavoriteMapPrice:
+                        [self.persistentContainer.viewContext deleteObject:(FavoriteMapPrice *)element];
+                        break;
+                    default:
+                        break;
                 }
             }
             break;
     }
+    [self save];
 }
 
 -(NSArray *)favorites:(Favorite)favorite {

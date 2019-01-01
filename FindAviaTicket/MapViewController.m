@@ -11,9 +11,12 @@
 #import <MapKit/MapKit.h>
 #import "DataManager.h"
 #import "APIManager.h"
+#import "CoreDataHelper.h"
+#import "AirportAnnotation.h"
 
 #define dataManager [DataManager sharedInstance]
 #define apiManager [APIManager sharedInstance]
+#define coreDataHelper [CoreDataHelper sharedInstance]
 
 @interface MapViewController () <MKMapViewDelegate>
 
@@ -33,6 +36,8 @@
     
     [self prepareUI];
     
+    self.mapView.delegate = self;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataDidLoad:) name:dataManagerLoadDataDidComplete object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCurrentLocation:) name:locationServiceDidUpdateCurrentLocation object:nil];
 }
@@ -40,6 +45,32 @@
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:dataManagerLoadDataDidComplete object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:locationServiceDidUpdateCurrentLocation object:nil];
+}
+
+#pragma mark - MKMapViewDelegate
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if ([annotation class] == MKUserLocation.class) return nil;
+    MKMarkerAnnotationView *markerView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"airportsPin"];
+    if (!markerView) {
+        markerView = [[MKMarkerAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"airportsPin"];
+        markerView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    }
+    markerView.canShowCallout = YES;
+    if ([annotation class] == AirportAnnotation.class) {
+        markerView.annotation = (AirportAnnotation *)annotation;
+    } else {
+        markerView.annotation = annotation;
+    }
+    return markerView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    AirportAnnotation *annotation = view.annotation;
+    if ([coreDataHelper isFavorite:[dataManager mapPriceForTitleAnnotation:annotation.title] withFavorite:favoriteMapPrice]) {
+        [coreDataHelper removeFromFavorite:[dataManager mapPriceForTitleAnnotation:annotation.title] withFavoriteClassofElement:FavoriteClassOfElementMapPrice andFavorite:favoriteMapPrice];
+    } else {
+        [coreDataHelper addToFavorite:[dataManager mapPriceForTitleAnnotation:annotation.title] withFavorite:favoriteMapPrice];
+    }
 }
 
 #pragma mark - Work with Notifications
@@ -60,15 +91,13 @@
         }
     }
 }
-
+#pragma mark - Setter
 -(void)setPrices:(NSArray *)prices {
     [self.mapView removeAnnotations:self.mapView.annotations];
+    dataManager.mapPrice = prices;
     for (MapPrice *price in prices) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            MKPointAnnotation *annotation = [MKPointAnnotation new];
-            annotation.title = [NSString stringWithFormat:@"%@ (%@)",price.destination.name, price.destination.code];
-            annotation.subtitle = [NSString stringWithFormat:@"%@ rub", price.value];
-            annotation.coordinate = price.destination.coordinate;
+            AirportAnnotation *annotation = [[AirportAnnotation alloc] initWithCoordinate:price.destination.coordinate title:[NSString stringWithFormat:@"%@ (%@)",price.destination.name, price.destination.code] andSubtitle:[NSString stringWithFormat:@"%@ rub", price.value]];
             [self.mapView addAnnotation:annotation];
         });
     }

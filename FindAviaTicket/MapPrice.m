@@ -7,6 +7,7 @@
 //
 
 #import "MapPrice.h"
+#import "DataManager.h"
 
 #define dataManager [DataManager sharedInstance]
 

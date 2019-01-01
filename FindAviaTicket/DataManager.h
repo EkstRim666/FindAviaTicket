@@ -35,11 +35,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray<Airport *> *airports;
 @property (strong, nonatomic) NSArray<City *> *cities;
 @property (strong, nonatomic) NSArray<Country *> *countries;
+@property (strong, nonatomic) NSArray<MapPrice *> *mapPrice;
 
 +(instancetype)sharedInstance;
 -(void)loadData;
 -(City *)cityForIATA:(NSString *)iata;
 -(City *)cityForLocation:(CLLocation *)location;
+-(MapPrice *)mapPriceForTitleAnnotation:(NSString *)titleAnnotation;
 
 @end
 

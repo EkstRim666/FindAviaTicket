@@ -14,6 +14,13 @@ typedef enum Favorite {
     favoriteMapPrice
 } Favorite;
 
+typedef enum FavoriteClassOfElement {
+    FavoriteClassOfElementTicket,
+    FavoriteClassOfElementMapPrice,
+    FavoriteClassOfElementFavoriteTicket,
+    FavoriteClassOfElementFavoriteMapPrice
+} FavoriteClassOfElement;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CoreDataHelper : NSObject
@@ -22,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL)isFavorite:(id)element withFavorite:(Favorite)favorite;
 -(NSArray *)favorites:(Favorite)favorite;
 -(void)addToFavorite:(id)element withFavorite:(Favorite)favorite;
--(void)removeFromFavorite:(id)element withFavorite:(Favorite)favorite;
+-(void)removeFromFavorite:(id)element withFavoriteClassofElement:(FavoriteClassOfElement)favoriteClass andFavorite:(Favorite)favorite;
 
 @end
 

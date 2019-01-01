@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DataManager.h"
+#import "City.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
