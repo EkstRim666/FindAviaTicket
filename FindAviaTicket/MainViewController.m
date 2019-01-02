@@ -11,9 +11,11 @@
 #import "PlaceTableViewController.h"
 #import "APIManager.h"
 #import "TicketsTableViewController.h"
+#import "ProgressView.h"
 
 #define dataManager [DataManager sharedInstance]
 #define apiManager [APIManager sharedInstance]
+#define progressView [ProgressView sharedInstance]
 
 @interface MainViewController ()<PlaceTableViewControllerDelegate>
 
@@ -111,16 +113,26 @@
 }
 
 -(void)searchButtonDidTap:(UIButton *)sender{
-    [apiManager ticketsWithRequest:self.searchRequest withCompletion:^(NSArray * _Nonnull tickets) {
-        if (tickets.count > 0) {
-            TicketsTableViewController *ticketTableViewController = [[TicketsTableViewController alloc] initWithTickets:tickets];
-            [self.navigationController showViewController:ticketTableViewController sender:self];
-        } else {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wrong" message:@"No tickets found for this destination" preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];
-        }
-    }];
+    if (self.searchRequest.origin && self.searchRequest.destionation) {
+        [progressView show:^{
+            [apiManager ticketsWithRequest:self.searchRequest withCompletion:^(NSArray * _Nonnull tickets) {
+                [progressView dismiss:^{
+                    if (tickets.count > 0) {
+                        TicketsTableViewController *ticketTableViewController = [[TicketsTableViewController alloc] initWithTickets:tickets];
+                        [self.navigationController showViewController:ticketTableViewController sender:self];
+                    } else {
+                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wrong" message:@"No tickets found for this destination" preferredStyle:UIAlertControllerStyleAlert];
+                        [alertController addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil]];
+                        [self presentViewController:alertController animated:YES completion:nil];
+                    }
+                }];
+            }];
+        }];
+    } else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wrong" message:@"No Departure or Arrival" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 #pragma mark - PlaceTableViewControllerDelegate
