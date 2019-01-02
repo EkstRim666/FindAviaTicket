@@ -28,6 +28,7 @@
 		4129230421AD76E50056643F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4129230221AD76E50056643F /* LaunchScreen.storyboard */; };
 		4129230721AD76E50056643F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4129230621AD76E50056643F /* main.m */; };
 		41442D0021DB1B5D00ACD721 /* AirportAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 41442CFF21DB1B5D00ACD721 /* AirportAnnotation.m */; };
+		41442D0321DC7A7F00ACD721 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41442D0221DC7A7F00ACD721 /* ProgressView.m */; };
 		415D466E21D4D1F600B1640C /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 415D466D21D4D1F600B1640C /* TabBarController.m */; };
 		41B0029421D75E830022F5EE /* AirTicketsBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41B0029221D75E830022F5EE /* AirTicketsBase.xcdatamodeld */; };
 		41B0029E21D762010022F5EE /* FavoriteTicket+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B0029C21D762010022F5EE /* FavoriteTicket+CoreDataClass.m */; };
@@ -78,6 +79,8 @@
 		4129230621AD76E50056643F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		41442CFE21DB1B5D00ACD721 /* AirportAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirportAnnotation.h; sourceTree = "<group>"; };
 		41442CFF21DB1B5D00ACD721 /* AirportAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirportAnnotation.m; sourceTree = "<group>"; };
+		41442D0121DC7A7F00ACD721 /* ProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
+		41442D0221DC7A7F00ACD721 /* ProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		415D466C21D4D1F600B1640C /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		415D466D21D4D1F600B1640C /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		41B0029321D75E830022F5EE /* AirTicketsBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirTicketsBase.xcdatamodel; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 				410F813921CF4AD200D16478 /* MapViewController.m */,
 				410F810621C7EED700D16478 /* PlaceTableViewController.h */,
 				410F810721C7EED700D16478 /* PlaceTableViewController.m */,
+				41442D0121DC7A7F00ACD721 /* ProgressView.h */,
+				41442D0221DC7A7F00ACD721 /* ProgressView.m */,
 				415D466C21D4D1F600B1640C /* TabBarController.h */,
 				415D466D21D4D1F600B1640C /* TabBarController.m */,
 				410F812F21CE128000D16478 /* TicketsTableViewController.h */,
@@ -359,6 +364,7 @@
 				410F80FE21C7B94400D16478 /* Airport.m in Sources */,
 				41B002B321D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataProperties.m in Sources */,
 				410F813A21CF4AD200D16478 /* MapViewController.m in Sources */,
+				41442D0321DC7A7F00ACD721 /* ProgressView.m in Sources */,
 				415D466E21D4D1F600B1640C /* TabBarController.m in Sources */,
 				41B0029E21D762010022F5EE /* FavoriteTicket+CoreDataClass.m in Sources */,
 				41B002B221D9D2BE0022F5EE /* FavoriteMapPrice+CoreDataClass.m in Sources */,
