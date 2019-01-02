@@ -12,6 +12,7 @@
 #import "APIManager.h"
 #import "TicketsTableViewController.h"
 #import "ProgressView.h"
+#import "FirstViewController.h"
 
 #define dataManager [DataManager sharedInstance]
 #define apiManager [APIManager sharedInstance]
@@ -31,6 +32,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    BOOL isFirstStart = [[NSUserDefaults standardUserDefaults] boolForKey:@"first_start"];
+    if (!isFirstStart) {
+        [self presentViewController:[[FirstViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil] animated:YES completion:nil];
+    }
     
     [dataManager loadData];
 
