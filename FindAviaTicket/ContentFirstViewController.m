@@ -57,18 +57,18 @@ float heightForText(NSString *text, UIFont *font, float width) {
 
 #pragma mark - Setter
 -(void)setImage:(UIImage *)image {
-    self.image = image;
+    _image = image;
     self.imageView.image = image;
 }
 
 -(void)setTitle:(NSString *)title {
-    self.titleLable.text = title;
+    _titleLable.text = title;
     float height = heightForText(title, self.titleLable.font, 200);
     self.titleLable.frame = CGRectMake((UIScreen.mainScreen.bounds.size.width / 2 - 100), (CGRectGetMinY(self.imageView.frame) - 40 - height), 200, height);
 }
 
 -(void)setContentText:(NSString *)contentText {
-    self.contentText = contentText;
+    _contentText = contentText;
     self.content.text = contentText;
     float height = heightForText(contentText, self.content.font, 200);
     self.content.frame = CGRectMake((UIScreen.mainScreen.bounds.size.width / 2 - 100), (CGRectGetMaxY(self.imageView.frame) + 20), 200, height);
