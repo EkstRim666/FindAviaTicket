@@ -14,7 +14,6 @@
 @property (strong, nonatomic) UILabel *price;
 @property (strong, nonatomic) UILabel *places;
 @property (strong, nonatomic) UILabel *date;
-//@property (strong, nonatomic) UIImageView *airlineLogo;
 
 @end
 
@@ -78,6 +77,12 @@
     
     NSURL *urlLogo = [NSURL URLWithString:[NSString stringWithFormat:@"https://pics.avs.io/200/200/%@.png", ticket.airline]];
     [_airlineLogo yy_setImageWithURL:urlLogo options:YYWebImageOptionSetImageWithFadeAnimation];
+    
+    self.contentView.alpha = 0;
+    __weak typeof (self) weakSelf = self;
+    [UIView animateWithDuration:3 animations:^{
+        weakSelf.contentView.alpha = 1;
+    }];
 }
 
 -(void)setFavoriteTicket:(FavoriteTicket *)favoriteTicket {
@@ -93,6 +98,12 @@
     
     NSURL *urlLogo = [NSURL URLWithString:[NSString stringWithFormat:@"https://pics.avs.io/200/200/%@.png", favoriteTicket.airline]];
     [_airlineLogo yy_setImageWithURL:urlLogo options:YYWebImageOptionSetImageWithFadeAnimation];
+    
+    self.contentView.alpha = 0;
+    __weak typeof (self) weakSelf = self;
+    [UIView animateWithDuration:3 animations:^{
+        weakSelf.contentView.alpha = 1;
+    }];
 }
 
 - (void)setFavoriteMapPrice:(FavoriteMapPrice *)favoriteMapPrice {
@@ -105,6 +116,12 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateFormat = @"dd MMMM yyyy hh:mm";
     _date.text = [dateFormatter stringFromDate:favoriteMapPrice.departure];
+    
+    self.contentView.alpha = 0;
+    __weak typeof (self) weakSelf = self;
+    [UIView animateWithDuration:3 animations:^{
+        weakSelf.contentView.alpha = 1;
+    }];
 }
 
 - (void)prepareForReuse {
