@@ -9,8 +9,10 @@
 #import "TicketsTableViewController.h"
 #import "TicketTableViewCell.h"
 #import "CoreDataHelper.h"
+#import "NotificationCenter.h"
 
 #define coreDataHelper [CoreDataHelper sharedInstance]
+#define notificationCenter [NotificationCenter sharedInstance]
 
 #define reuseIdentifierCell @"ticketTableViewCell"
 
@@ -18,11 +20,14 @@
 
 @property (strong, nonatomic) UISegmentedControl *navigationSegmentedControl;
 @property (strong, nonatomic) NSArray *tickets;
+@property (strong, nonatomic) UIDatePicker *datePicker;
+@property (strong, nonatomic) UITextField *dateTextField;
 
 @end
 
 @implementation TicketsTableViewController {
     BOOL isFavorites;
+    TicketTableViewCell *notificationCell;
 }
 
 -(instancetype)initFavoriteTicketsTableViewController {
@@ -39,6 +44,7 @@
         [self.navigationSegmentedControl addTarget:self action:@selector(changeSource) forControlEvents:UIControlEventValueChanged];
         self.navigationItem.titleView = self.navigationSegmentedControl;
         [self changeSource];
+        [self prepareUI];
     }
     return self;
 }
@@ -50,6 +56,7 @@
         self.title = @"Tickets";
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.tableView registerClass:[TicketTableViewCell class] forCellReuseIdentifier:reuseIdentifierCell];
+        [self prepareUI];
     }
     return self;
 }
@@ -64,6 +71,7 @@
     }
 }
 
+#pragma mark - IBAction
 -(void)changeSource {
     switch (self.navigationSegmentedControl.selectedSegmentIndex) {
         case 0:
@@ -77,7 +85,67 @@
     [self.tableView reloadData];
 }
 
+-(void)doneButtonDidTap:(UIBarButtonItem *)sender {
+    if (self.datePicker.date && notificationCell) {
+        NSString *message;
+        NSURL *imageUrl;
+        if (isFavorites) {
+            if (self.navigationSegmentedControl.selectedSegmentIndex == 0) {
+                message = [NSString stringWithFormat:@"Flight %@ - %@ for %lld rub.", notificationCell.favoriteTicket.from, notificationCell.favoriteTicket.to, notificationCell.favoriteTicket.price];
+                if (notificationCell.airlineLogo.image) {
+                    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingString:[NSString stringWithFormat:@"/%@.png", notificationCell.favoriteTicket.airline]];
+                    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                        UIImage *logo = notificationCell.airlineLogo.image;
+                        NSData *pngData = UIImagePNGRepresentation(logo);
+                        [pngData writeToFile:path atomically:YES];
+                    }
+                    imageUrl = [NSURL fileURLWithPath:path];
+                }
+            } else if (self.navigationSegmentedControl.selectedSegmentIndex == 1) {
+                message = [NSString stringWithFormat:@"Flight %@ - %@ for %lld rub.", notificationCell.favoriteMapPrice.origin, notificationCell.favoriteMapPrice.destination, notificationCell.favoriteMapPrice.value];
+                imageUrl = nil;
+            }
+        } else {
+            message = [NSString stringWithFormat:@"Flight %@ - %@ for %@ rub.", notificationCell.ticket.from, notificationCell.ticket.to, notificationCell.ticket.price];
+            if (notificationCell.airlineLogo.image) {
+                NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingString:[NSString stringWithFormat:@"/%@.png", notificationCell.ticket.airline]];
+                if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                    UIImage *logo = notificationCell.airlineLogo.image;
+                    NSData *pngData = UIImagePNGRepresentation(logo);
+                    [pngData writeToFile:path atomically:YES];
+                }
+                imageUrl = [NSURL fileURLWithPath:path];
+            }
+        }
+        
+        Notification notification = NotificationMake(@"Remember abot ticket", message, self.datePicker.date, imageUrl);
+        [notificationCenter sendNotification:notification];
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success" message:[NSString stringWithFormat:@"Remember will be sent at %@", self.datePicker.date] preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    self.datePicker.date = [NSDate date];
+    notificationCell = nil;
+    [self.view endEditing:YES];
+}
 
+#pragma mark - PrepareUI
+-(void)prepareUI {
+    self.datePicker = [UIDatePicker new];
+    self.datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    self.datePicker.minimumDate = [NSDate date];
+    
+    UIToolbar *keyboardToolbar = [UIToolbar new];
+    [keyboardToolbar sizeToFit];
+    keyboardToolbar.items = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:@selector(doneButtonDidTap:)]];
+    
+    self.dateTextField = [[UITextField alloc] initWithFrame:self.view.bounds];
+    self.dateTextField.hidden = YES;
+    self.dateTextField.inputView = self.datePicker;
+    self.dateTextField.inputAccessoryView = keyboardToolbar;
+    [self.view addSubview:self.dateTextField];
+}
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -115,6 +183,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ticket Actions" message:@"What do you want to do with ticket?" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *favoriteAction;
+    UIAlertAction *notificationAction = [UIAlertAction actionWithTitle:@"Remember" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self->notificationCell = [tableView cellForRowAtIndexPath:indexPath];
+        [self.dateTextField becomeFirstResponder];
+    }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:nil];
     if (isFavorites) {
         if (self.navigationSegmentedControl.selectedSegmentIndex == 0) {
@@ -144,6 +216,7 @@
         }
     }
     [alertController addAction:favoriteAction];
+    [alertController addAction:notificationAction];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }

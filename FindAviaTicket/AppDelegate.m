@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "TabBarController.h"
+#import "NotificationCenter.h"
+
+#define notificationCenter [NotificationCenter sharedInstance]
 
 @interface AppDelegate ()
 
@@ -20,6 +23,9 @@
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.rootViewController = [TabBarController new];
     [self.window makeKeyAndVisible];
+    
+    [notificationCenter registerService];
+    
     return YES;
 }
 

@@ -14,7 +14,7 @@
 @property (strong, nonatomic) UILabel *price;
 @property (strong, nonatomic) UILabel *places;
 @property (strong, nonatomic) UILabel *date;
-@property (strong, nonatomic) UIImageView *airlineLogo;
+//@property (strong, nonatomic) UIImageView *airlineLogo;
 
 @end
 

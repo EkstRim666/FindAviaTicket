@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TicketTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) UIImageView *airlineLogo;
+
 @property (strong, nonatomic) Ticket *ticket;
 @property (strong, nonatomic) FavoriteTicket *favoriteTicket;
 @property (strong, nonatomic) FavoriteMapPrice *favoriteMapPrice;
