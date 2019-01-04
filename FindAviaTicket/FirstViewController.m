@@ -29,8 +29,8 @@
 }
 
 -(void)createContentDataArray {
-    NSArray *titles = @[@"ABOUT APPLICATION", @"AVIATICKET", @"MAP PRICE", @"FAVORITE"];
-    NSArray *contents = @[@"The application is to search for aviatickets", @"You can to find the cheapest aviaticket", @"You can to view to map price", @"You can to save a selected aviaticket in favorite"];
+    NSArray *titles = @[NSLocalizedString(@"ABOUT APPLICATION", nil), NSLocalizedString(@"AVIATICKET", nil), NSLocalizedString(@"MAP PRICE", nil), NSLocalizedString(@"FAVORITE", nil)];
+    NSArray *contents = @[NSLocalizedString(@"aboutAppContents", nil), NSLocalizedString(@"aviaticketContents", nil), NSLocalizedString(@"mapPriceContents", nil), NSLocalizedString(@"favoriteContents", nil)];
     for (int i = 0; i < 4; ++i) {
         contentData[i].title = [titles objectAtIndex:i];
         contentData[i].content = [contents objectAtIndex:i];
@@ -52,19 +52,19 @@
     switch (index) {
         case 0:
             self.before.frame = CGRectZero;
-            [self.next setTitle:@"NEXT" forState:UIControlStateNormal];
+            [self.next setTitle:NSLocalizedString(@"nextFVC", nil) forState:UIControlStateNormal];
             break;
         case 1:
         case 2:
             self.before.frame = CGRectMake(0, (UIScreen.mainScreen.bounds.size.height - 50), 100, 50);
-            [self.before setTitle:@"BEFORE" forState:UIControlStateNormal];
-            [self.next setTitle:@"NEXT" forState:UIControlStateNormal];
+            [self.before setTitle:NSLocalizedString(@"beforeFVC", nil) forState:UIControlStateNormal];
+            [self.next setTitle:NSLocalizedString(@"nextFVC", nil) forState:UIControlStateNormal];
             self.next.tag = 0;
             break;
         case 3:
             self.before.frame = CGRectMake(0, (UIScreen.mainScreen.bounds.size.height - 50), 100, 50);
-            [self.before setTitle:@"BEFORE" forState:UIControlStateNormal];
-            [self.next setTitle:@"CLOSE" forState:UIControlStateNormal];
+            [self.before setTitle:NSLocalizedString(@"beforeFVC", nil) forState:UIControlStateNormal];
+            [self.next setTitle:NSLocalizedString(@"doneFVC", nil) forState:UIControlStateNormal];
             self.next.tag = 1;
             break;
         default:
@@ -111,7 +111,7 @@
     self.close.frame = CGRectMake((self.view.bounds.size.width - 100), 10, 100, 50);
     [self.close addTarget:self action:@selector(closeButtonDidTap) forControlEvents:UIControlEventTouchUpInside];
     [self.close setTintColor:UIColor.blackColor];
-    [self.close setTitle:@"CLOSE" forState:UIControlStateNormal];
+    [self.close setTitle:NSLocalizedString(@"closeFVC", nil) forState:UIControlStateNormal];
     [self.view addSubview:self.close];
     
     [self updateButtonWithIndex:0];

@@ -30,15 +30,15 @@
     NSMutableArray<UIViewController *> *controllers = [NSMutableArray<UIViewController *> new];
     
     MainViewController *mainViewController = [MainViewController new];
-    mainViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Search" image:nil selectedImage:nil];
+    mainViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"SearchTBC", nil) image:nil selectedImage:nil];
     [controllers addObject:[[UINavigationController alloc] initWithRootViewController:mainViewController]];
     
     MapViewController *mapViewController = [MapViewController new];
-    mapViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Map price" image:nil selectedImage:nil];
+    mapViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"MapPriceTBC", nil) image:nil selectedImage:nil];
     [controllers addObject:[[UINavigationController alloc] initWithRootViewController:mapViewController]];
     
     TicketsTableViewController *favoriteTableViewController = [[TicketsTableViewController alloc] initFavoriteTicketsTableViewController];
-    favoriteTableViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Favorite" image:nil selectedImage:nil];
+    favoriteTableViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"FavoriteTBC", nil) image:nil selectedImage:nil];
     [controllers addObject:[[UINavigationController alloc] initWithRootViewController:favoriteTableViewController]];
     
     return controllers;

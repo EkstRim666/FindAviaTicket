@@ -105,7 +105,7 @@
 
 #pragma mark - PrepareUI
 -(void)prepareUI {
-    self.title = @"Map price";
+    self.title = NSLocalizedString(@"titleMapVC", nil);
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.showsUserLocation = YES;
     [self.view addSubview:self.mapView];

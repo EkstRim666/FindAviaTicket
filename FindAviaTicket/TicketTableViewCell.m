@@ -67,7 +67,7 @@
 -(void)setTicket:(Ticket *)ticket {
     _ticket = ticket;
     
-    _price.text = [NSString stringWithFormat:@"%@ rub", ticket.price];
+    _price.text = [NSString stringWithFormat:@"%@ %@", ticket.price, NSLocalizedString(@"currencyTTVC", nil)];
     
     _places.text = [NSString stringWithFormat:@"%@ - %@", ticket.from, ticket.to];
     
@@ -88,7 +88,7 @@
 -(void)setFavoriteTicket:(FavoriteTicket *)favoriteTicket {
     _favoriteTicket = favoriteTicket;
     
-    _price.text = [NSString stringWithFormat:@"%lld rub", favoriteTicket.price];
+    _price.text = [NSString stringWithFormat:@"%lld %@", favoriteTicket.price, NSLocalizedString(@"currencyTTVC", nil)];
     
     _places.text = [NSString stringWithFormat:@"%@ - %@", favoriteTicket.from, favoriteTicket.to];
     
@@ -109,7 +109,7 @@
 - (void)setFavoriteMapPrice:(FavoriteMapPrice *)favoriteMapPrice {
     _favoriteMapPrice = favoriteMapPrice;
     
-    _price.text = [NSString stringWithFormat:@"%lld rub", favoriteMapPrice.value];
+    _price.text = [NSString stringWithFormat:@"%lld %@", favoriteMapPrice.value, NSLocalizedString(@"currencyTTVC", nil)];
     
     _places.text = [NSString stringWithFormat:@"%@ - %@", favoriteMapPrice.origin, favoriteMapPrice.destination];
     

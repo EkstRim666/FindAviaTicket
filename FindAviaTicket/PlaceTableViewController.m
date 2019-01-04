@@ -47,6 +47,7 @@
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.searchResultsUpdater = self;
+    self.searchController.searchBar.placeholder = NSLocalizedString(@"searchBarPlaceholder", nil);
     if (@available(iOS 11.0, *)) {
         self.navigationItem.searchController = self.searchController;
         self.navigationItem.hidesSearchBarWhenScrolling = NO;
@@ -54,7 +55,7 @@
         self.tableView.tableHeaderView = self.searchController.searchBar;
     }
     
-    self.navigationSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Cities", @"Airports"]];
+    self.navigationSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Cities", nil), NSLocalizedString(@"Airports", nil)]];
     self.navigationSegmentedControl.tintColor = UIColor.blackColor;
     self.navigationSegmentedControl.selectedSegmentIndex = 0;
     [self.navigationSegmentedControl addTarget:self action:@selector(changeSource) forControlEvents:UIControlEventValueChanged];
@@ -63,10 +64,10 @@
     
     switch (self.placeType) {
         case PlaceTypeDeparture:
-            self.title = @"Departure";
+            self.title = NSLocalizedString(@"titleDeparture", nil);
             break;
         case PlaceTypeArrival:
-            self.title = @"Arrival";
+            self.title = NSLocalizedString(@"titleArrival", nil);
             break;
     }
 }

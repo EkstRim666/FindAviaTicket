@@ -35,10 +35,10 @@
     if (self) {
         isFavorites = YES;
         _tickets = [NSArray new];
-        self.title = @"Favorites";
+        self.title = NSLocalizedString(@"titleFavorite", nil);
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.tableView registerClass:[TicketTableViewCell class] forCellReuseIdentifier:reuseIdentifierCell];
-        self.navigationSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"From Search", @"from Map price"]];
+        self.navigationSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"From Search", nil), NSLocalizedString(@"From Map Price", nil)]];
         self.navigationSegmentedControl.tintColor = UIColor.blackColor;
         self.navigationSegmentedControl.selectedSegmentIndex = 0;
         [self.navigationSegmentedControl addTarget:self action:@selector(changeSource) forControlEvents:UIControlEventValueChanged];
@@ -53,7 +53,7 @@
     self = [super init];
     if (self) {
         _tickets = tickets;
-        self.title = @"Tickets";
+        self.title = NSLocalizedString(@"titleTicket", nil);
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.tableView registerClass:[TicketTableViewCell class] forCellReuseIdentifier:reuseIdentifierCell];
         [self prepareUI];
@@ -91,7 +91,7 @@
         NSURL *imageUrl;
         if (isFavorites) {
             if (self.navigationSegmentedControl.selectedSegmentIndex == 0) {
-                message = [NSString stringWithFormat:@"Flight %@ - %@ for %lld rub.", notificationCell.favoriteTicket.from, notificationCell.favoriteTicket.to, notificationCell.favoriteTicket.price];
+                message = [NSString stringWithFormat:@"%@ %@ - %@ %@ %lld %@.", NSLocalizedString(@"Flight", nil), notificationCell.favoriteTicket.from, notificationCell.favoriteTicket.to, NSLocalizedString(@"for", nil), notificationCell.favoriteTicket.price, NSLocalizedString(@"currency", nil)];
                 if (notificationCell.airlineLogo.image) {
                     NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingString:[NSString stringWithFormat:@"/%@.png", notificationCell.favoriteTicket.airline]];
                     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -102,11 +102,11 @@
                     imageUrl = [NSURL fileURLWithPath:path];
                 }
             } else if (self.navigationSegmentedControl.selectedSegmentIndex == 1) {
-                message = [NSString stringWithFormat:@"Flight %@ - %@ for %lld rub.", notificationCell.favoriteMapPrice.origin, notificationCell.favoriteMapPrice.destination, notificationCell.favoriteMapPrice.value];
+                message = [NSString stringWithFormat:@"%@ %@ - %@ %@ %lld %@.", NSLocalizedString(@"Flight", nil), notificationCell.favoriteMapPrice.origin, notificationCell.favoriteMapPrice.destination, NSLocalizedString(@"for", nil), notificationCell.favoriteMapPrice.value, NSLocalizedString(@"currency", nil)];
                 imageUrl = nil;
             }
         } else {
-            message = [NSString stringWithFormat:@"Flight %@ - %@ for %@ rub.", notificationCell.ticket.from, notificationCell.ticket.to, notificationCell.ticket.price];
+            message = [NSString stringWithFormat:@"%@ %@ - %@ %@ %@ %@.", NSLocalizedString(@"Flight", nil), notificationCell.ticket.from, notificationCell.ticket.to, NSLocalizedString(@"for", nil), notificationCell.ticket.price, NSLocalizedString(@"currency", nil)];
             if (notificationCell.airlineLogo.image) {
                 NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingString:[NSString stringWithFormat:@"/%@.png", notificationCell.ticket.airline]];
                 if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -118,11 +118,11 @@
             }
         }
         
-        Notification notification = NotificationMake(@"Remember abot ticket", message, self.datePicker.date, imageUrl);
+        Notification notification = NotificationMake(NSLocalizedString(@"Remember about ticket", nil), message, self.datePicker.date, imageUrl);
         [notificationCenter sendNotification:notification];
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success" message:[NSString stringWithFormat:@"Remember will be sent at %@", self.datePicker.date] preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:nil]];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Success", nil) message:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Remember will be sent at", nil), self.datePicker.date] preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alertController animated:YES completion:nil];
     }
     self.datePicker.date = [NSDate date];
@@ -181,23 +181,23 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ticket Actions" message:@"What do you want to do with ticket?" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Ticket Actions", nil) message:NSLocalizedString(@"What do you want to do with ticket?", nil) preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *favoriteAction;
-    UIAlertAction *notificationAction = [UIAlertAction actionWithTitle:@"Remember" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *notificationAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Remember", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self->notificationCell = [tableView cellForRowAtIndexPath:indexPath];
         [self.dateTextField becomeFirstResponder];
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleCancel handler:nil];
     if (isFavorites) {
         if (self.navigationSegmentedControl.selectedSegmentIndex == 0) {
-            favoriteAction = [UIAlertAction actionWithTitle:@"Delete from favorites" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete from favorites", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 [coreDataHelper removeFromFavorite:[self.tickets objectAtIndex:indexPath.row] withFavoriteClassofElement:FavoriteClassOfElementFavoriteTicket andFavorite:favoriteTicket];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
                 });
             }];
         } else if (self.navigationSegmentedControl.selectedSegmentIndex == 1) {
-            favoriteAction = [UIAlertAction actionWithTitle:@"Delete from favorites" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete from favorites", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 [coreDataHelper removeFromFavorite:[self.tickets objectAtIndex:indexPath.row] withFavoriteClassofElement:FavoriteClassOfElementFavoriteMapPrice andFavorite:favoriteMapPrice];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
@@ -206,11 +206,11 @@
         }
     } else {
         if ([coreDataHelper isFavorite:[self.tickets objectAtIndex:indexPath.row] withFavorite:favoriteTicket]) {
-            favoriteAction = [UIAlertAction actionWithTitle:@"Delete from favorites" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Delete from favorites", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 [coreDataHelper removeFromFavorite:[self.tickets objectAtIndex:indexPath.row] withFavoriteClassofElement:FavoriteClassOfElementTicket andFavorite:favoriteTicket];
             }];
         } else {
-            favoriteAction = [UIAlertAction actionWithTitle:@"Add to favorites" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            favoriteAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Add to favorites", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [coreDataHelper addToFavorite:[self.tickets objectAtIndex:indexPath.row] withFavorite:favoriteTicket];
             }];
         }

@@ -1,0 +1,68 @@
+/* 
+  Localizable.strings
+  FindAviaTicket
+
+  Created by Andrey Yusupov on 04/01/2019.
+  Copyright © 2019 Andrey Yusupov. All rights reserved.
+*/
+
+//FirstViewController
+"ABOUT APPLICATION" = "О ПРИЛОЖЕНИИ";
+"AVIATICKET" = "АВИАБИЛЕТЫ";
+"MAP PRICE" = "КАРТА ЦЕН";
+"FAVORITE" = "ИЗБРАННОЕ";
+"aboutAppContents" = "Приложение для поиска авибилетов";
+"aviaticketContents" = "Находите самые дешёвые авибилеты";
+"mapPriceContents" = "Просматривайте карту цен";
+"favoriteContents" = "Сохраняйте выбранные билеты в избранное";
+"closeFVC" = "ЗАКРЫТЬ";
+"nextFVC" = "ДАЛЕЕ";
+"beforeFVC" = "НАЗАД";
+"doneFVC" = "ГОТОВО";
+
+//TabBarController
+"SearchTBC" = "Поиск";
+"MapPriceTBC" = "Карта цен";
+"FavoriteTBC" = "Избранное";
+
+//MainViewController
+"titleMVC" = "Поиск";
+"DepartureMVC" = "Откуда";
+"ArrivalMVC" = "Куда";
+"SearchMVC" = "Поиск";
+"No tickets found for this destination" = "По данному направлению билетов не найдено";
+"No Departure or Arrival" = "Отсутвует место отправления или место прибытия";
+
+//PlaceTableViewController
+"titleDeparture" = "Откуда";
+"titleArrival" = "Куда";
+"Cities" = "Города";
+"Airports" = "Аэропорты";
+"searchBarPlaceholder" = "Поиск";
+
+//MapViewController
+"titleMapVC" = "Карта цен";
+
+//TicketsTableViewController
+"titleTicket" = "Билеты";
+"titleFavorite" = "Избранное";
+"From Search" = "С поиска";
+"From Map Price" = "С карты цен";
+"Flight" = "Рейс";
+"for" = "за";
+"currency" = "₽";
+"Remember about ticket" = "Напоминание о билете";
+"Success" = "Успех";
+"Remember will be sent at" = "Напоминание будет отправлено ";
+"Ticket Actions" = "Действие с билетом";
+"What do you want to do with ticket?" = "Что необходимо сделать с выбранным бмлетом?";
+"Remember" = "Напомнить";
+"Delete from favorites" = "Удалить из избранного";
+"Add to favorites" = "Добавить в избранное";
+
+//TicketTableViewCell
+"currencyTTVC" = "₽";
+
+//Alerts
+"Wrong" = "Ошибка";
+"Close" = "Закрыть";

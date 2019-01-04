@@ -64,7 +64,7 @@
     self.view.backgroundColor = UIColor.whiteColor;
     
     self.navigationController.navigationBar.prefersLargeTitles = YES;
-    self.title = @"Search";
+    self.title = NSLocalizedString(@"titleMVC", nil);
     
     self.placeContainerView = [[UIView alloc] initWithFrame:CGRectMake(20, (CGRectGetMaxY(self.navigationController.navigationBar.frame) + 40), (UIScreen.mainScreen.bounds.size.width - 40), 170)];
     self.placeContainerView.backgroundColor = UIColor.whiteColor;
@@ -76,7 +76,7 @@
     [self.view addSubview:self.placeContainerView];
     
     self.departureButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.departureButton setTitle:@"Departure" forState:UIControlStateNormal];
+    [self.departureButton setTitle:NSLocalizedString(@"DepartureMVC", nil) forState:UIControlStateNormal];
     self.departureButton.tintColor = UIColor.blackColor;
     self.departureButton.frame = CGRectMake(10, 20, (self.placeContainerView.frame.size.width - 20), 60);
     self.departureButton.backgroundColor = [UIColor.lightGrayColor colorWithAlphaComponent:0.3];
@@ -86,7 +86,7 @@
     [self.placeContainerView addSubview:self.departureButton];
     
     self.arrivalButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.arrivalButton setTitle:@"Arrival" forState:UIControlStateNormal];
+    [self.arrivalButton setTitle:NSLocalizedString(@"ArrivalMVC", nil) forState:UIControlStateNormal];
     self.arrivalButton.tintColor = UIColor.blackColor;
     self.arrivalButton.frame = CGRectMake(10, (CGRectGetMaxY(self.departureButton.frame) + 10), (self.placeContainerView.frame.size.width - 20), 60);
     self.arrivalButton.backgroundColor = [UIColor.lightGrayColor colorWithAlphaComponent:0.3];
@@ -96,7 +96,7 @@
     [self.placeContainerView addSubview:self.arrivalButton];
     
     self.searchButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.searchButton setTitle:@"Search" forState:UIControlStateNormal];
+    [self.searchButton setTitle:NSLocalizedString(@"SearchMVC", nil) forState:UIControlStateNormal];
     self.searchButton.tintColor = UIColor.whiteColor;
     self.searchButton.titleLabel.font = [UIFont systemFontOfSize:20 weight:UIFontWeightBold];
     self.searchButton.frame = CGRectMake(30, (CGRectGetMaxY(self.placeContainerView.frame) + 30), (UIScreen.mainScreen.bounds.size.width - 60), 60);
@@ -127,16 +127,16 @@
                         TicketsTableViewController *ticketTableViewController = [[TicketsTableViewController alloc] initWithTickets:tickets];
                         [self.navigationController showViewController:ticketTableViewController sender:self];
                     } else {
-                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wrong" message:@"No tickets found for this destination" preferredStyle:UIAlertControllerStyleAlert];
-                        [alertController addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil]];
+                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Wrong", nil) message:NSLocalizedString(@"No tickets found for this destination", nil) preferredStyle:UIAlertControllerStyleAlert];
+                        [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault handler:nil]];
                         [self presentViewController:alertController animated:YES completion:nil];
                     }
                 }];
             }];
         }];
     } else {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Wrong" message:@"No Departure or Arrival" preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:nil]];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Wrong", nil) message:NSLocalizedString(@"No Departure or Arrival", nil) preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault handler:nil]];
         [self presentViewController:alertController animated:YES completion:nil];
     }
 }
