@@ -1,0 +1,68 @@
+/* 
+  Localizable.strings
+  FindAviaTicket
+
+  Created by Andrey Yusupov on 04/01/2019.
+  Copyright © 2019 Andrey Yusupov. All rights reserved.
+*/
+
+//FirstViewController
+"ABOUT APPLICATION" = "ABOUT APPLICATION";
+"AVIATICKET" = "AVIATICKET";
+"MAP PRICE" = "MAP PRICE";
+"FAVORITE" = "FAVORITE";
+"aboutAppContents" = "The application is to search for aviatickets";
+"aviaticketContents" = "You can to find the cheapest aviaticket";
+"mapPriceContents" = "You can to view to map price";
+"favoriteContents" = "You can to save a selected aviaticket in favorite";
+"closeFVC" = "CLOSE";
+"nextFVC" = "NEXT";
+"beforeFVC" = "BEFORE";
+"doneFVC" = "DONE";
+
+//TabBarController
+"SearchTBC" = "Search";
+"MapPriceTBC" = "Map Price";
+"FavoriteTBC" = "Favorite";
+
+//MainViewController
+"titleMVC" = "Search";
+"DepartureMVC" = "Departure";
+"ArrivalMVC" = "Arrival";
+"SearchMVC" = "Search";
+"No tickets found for this destination" = "No tickets found for this destination";
+"No Departure or Arrival" = "No Departure or Arrival";
+
+//PlaceTableViewController
+"titleDeparture" = "Departure";
+"titleArrival" = "Arrival";
+"Cities" = "Cities";
+"Airports" = "Airports";
+"searchBarPlaceholder" = "Search";
+
+//MapViewController
+"titleMapVC" = "Map Price";
+
+//TicketsTableViewController
+"titleTicket" = "Tickets";
+"titleFavorite" = "Favorites";
+"From Search" = "From Search";
+"From Map Price" = "From Map Price";
+"Flight" = "Flight";
+"for" = "for";
+"currency" = "₽";
+"Remember about ticket" = "Remember about ticket";
+"Success" = "Success";
+"Remember will be sent at" = "Remember will be sent at ";
+"Ticket Actions" = "Ticket Actions";
+"What do you want to do with ticket?" = "What do you want to do with ticket?";
+"Remember" = "Remember";
+"Delete from favorites" = "Delete from favorites";
+"Add to favorites" = "Add to favorites";
+
+//TicketTableViewCell
+"currencyTTVC" = "₽";
+
+//Alerts
+"Wrong" = "Wrong";
+"Close" = "Close";
